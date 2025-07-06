@@ -6,11 +6,11 @@ export default function Home() {
   const [mainImage, setMainImage] = useState("/Biff.jpg");
   const [text, setText] = useState("Would you be my Girlfriend?");
   const [buttonsVisible, setButtonsVisible] = useState(true);
-  const [imageSize, setImageSize] = useState(150);
+  const [imageSize, setImageSize] = useState(100);
   const [location, setLocation] = useState({ x: 0, y: 0 });
 
-  const BOX_W = 210;
-  const BOX_H = 400;
+  const BOX_W = 150;
+  const BOX_H = 300;
 
   useEffect(() => {
     const { innerWidth, innerHeight } = window;
@@ -59,24 +59,24 @@ export default function Home() {
             height={imageSize}
             priority
           />
-          <p className="py-5 text-black">{text}</p>
+          <p className="py-5 text-black font-bold">{text}</p>
         </div>
         {buttonsVisible && (
           <div className="flex justify-center py">
             <button
-              className="mr-8 bg-red-300 rounded-full py-2 px-4"
+              className="mr-8 bg-red-300 rounded-full font-bold py-2 px-4"
               onClick={() => {
+                setButtonsVisible(false);
                 setMainImage("/frogs-dancing.png");
                 setText("Congratulations!");
-                setButtonsVisible(false);
-                setImageSize(400);
+                setImageSize(300);
               }}
             >
               <span>Yesss!</span>
             </button>
 
             <button
-              className="bg-red-500 rounded-full py-2 px-4"
+              className="bg-red-500 rounded-full font-bold py-2 px-4"
               onClick={() => setLocation(cordinates())}
             >
               No!
