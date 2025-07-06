@@ -3,6 +3,11 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function Home() {
+  const [mainImage, setMainImage] = useState("/Biff.jpg");
+  const [text, setText] = useState("Would you be my Girlfriend?");
+  const [buttonsVisible, setButtonsVisible] = useState(true);
+  const [imageSize, setImageSize] = useState(150);
+
   let BOX_W = 210;
   let BOX_H = 400;
 
@@ -49,27 +54,36 @@ export default function Home() {
       >
         <div className="flex flex-col items-center">
           <Image
-            src="/Biff.jpg"
+            src={mainImage}
             alt="Biff image"
-            width={150}
-            height={30}
+            width={imageSize}
+            height={imageSize}
             priority
           />
-          <p className="py-5 text-red-200">Would you be my Girlfriend?</p>
+          <p className="py-5 text-black">{text}</p>
         </div>
+        {buttonsVisible && (
+          <div className="flex justify-center py">
+            <button
+              className="mr-8 bg-red-300 rounded-full py-2 px-4"
+              onClick={() => {
+                setMainImage("/frogs-dancing.png");
+                setText("Congradulations!");
+                setButtonsVisible(false);
+                setImageSize(400);
+              }}
+            >
+              <span>Yesss!</span>
+            </button>
 
-        <div className="flex justify-center py">
-          <button className="mr-8 bg-red-300 rounded-full py-2 px-4">
-            Yesss!
-          </button>
-
-          <button
-            className="bg-red-500 rounded-full py-2 px-4"
-            onClick={() => setLocation(cordinates())}
-          >
-            No!
-          </button>
-        </div>
+            <button
+              className="bg-red-500 rounded-full py-2 px-4"
+              onClick={() => setLocation(cordinates())}
+            >
+              No!
+            </button>
+          </div>
+        )}
       </main>
     </div>
   );
