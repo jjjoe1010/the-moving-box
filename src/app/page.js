@@ -68,7 +68,7 @@ export default function Home() {
               onClick={() => {
                 setButtonsVisible(false);
                 setMainImage("/frogs-dancing.png");
-                setText("Congratulations!");
+                setText("Congratulations!I am all yours now ( ≧ω≦)/");
                 setImageSize(300);
               }}
             >
